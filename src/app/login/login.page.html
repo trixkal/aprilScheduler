@@ -1,0 +1,11 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Welcome</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-input (keyup.enter)="doLogin(userItem)" [(ngModel)]="userItem" placeholder="Enter user name"></ion-input>
+    <ion-button (click)="doLogin(userItem)" fill="outline">Login</ion-button>
+</ion-content>

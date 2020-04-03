@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private auth: AuthenticationService) {
+    this.doLogin();
+  }
 
+  doLogin() {
+    this.auth.login();
+    // this.route.navigateByUrl(`/tabs/tab1`);
+  }
 }
