@@ -1,17 +1,39 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-toolbar color="primary">
+  <ion-buttons slot="secondary">
+      <ion-button fill="solid" [disabled]="isToday" (click)="today()">
+          <ion-icon slot="start" name="today-outline"></ion-icon>
+          Today
+      </ion-button>
+  </ion-buttons>
+  <!-- <ion-title>Scheduler Beta: 2.2</ion-title> -->
+  <ion-buttons slot="primary">
+      <ion-button fill="solid" color="secondary" (click)="changeMode('month')">Month</ion-button>
+      <ion-button fill="solid" color="secondary" (click)="changeMode('week')">Week</ion-button>
+      <ion-button fill="solid" color="secondary" (click)="changeMode('day')">Day</ion-button>
+      <ion-button fill="solid" color="secondary" (click)="loadEvents()">Test</ion-button>
+
+  </ion-buttons>
+</ion-toolbar>
+
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
+
+
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+
+  <calendar [eventSource]="eventSource"
+            [calendarMode]="calendar.mode"
+            [currentDate]="calendar.currentDate"
+            (onCurrentDateChanged)="onCurrentDateChanged($event)"
+            (onEventSelected)="onEventSelected($event)"
+            (onTitleChanged)="onViewTitleChanged($event)"
+            (onTimeSelected)="onTimeSelected($event)"
+            step="30">
+  </calendar>
+
+
+
+
 </ion-content>
